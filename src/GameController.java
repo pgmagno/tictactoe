@@ -41,7 +41,7 @@ public class GameController {
 
             if (myBoard.getNumberOfTurns() >= 5) {
                 if (myBoard.gameCheck()) {
-                    System.out.println("Obrigado por jogar!");
+                    System.out.println("Thank you for playing!");
                     break;
                 }
             }
