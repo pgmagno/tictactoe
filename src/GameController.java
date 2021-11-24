@@ -1,24 +1,50 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameController {
 
     public static void main (String[] args){
-        System.out.println("Bem-vindo ao Jogo da Velha");
-        System.out.println("Digite no terminal uma combinação de \"linha coluna\"");
-        System.out.println("Por exemplo: 1 1");
-        System.out.println("Esse comando irá colocar o símbolo célula no canto esquerdo superior");
-        System.out.println("Linhas e colunas vão de 1 a 3");
-        System.out.println("Decidam entre si a quem pertencerá os símbolos \"X\" ou \"O\".");
-        System.out.println("O jogo sorteará um dos símbolos para ser o primeiro a jogar.");
-        System.out.println("Pressione \"Enter\" quando estiverem prontos!");
-        Scanner readySetGo = new Scanner(System.in);
-        readySetGo.nextLine();
 
+        Messages msg = new Messages();
+        msg.welcome();
 
+        //receiving player choice of game mode
+        Scanner gamePrep = new Scanner(System.in);
 
+        int gameModeChoice;
+        while (true) {
+            try {
+                gameModeChoice = gamePrep.nextInt();
+                if (gameModeChoice > 0 && gameModeChoice <= 3) {
+                    break;
+                } else {
+                    System.out.println("Pick a valid game mode (1 or 2)");
+                }
+            } catch (InputMismatchException |
+                    ArrayIndexOutOfBoundsException |
+                    NumberFormatException exception) {
+                System.out.println("Pick a valid game mode (1 or 2)");
+                gamePrep.nextLine();
+            }
+        }
 
+        switch (gameModeChoice) {
 
-        Board myBoard = new Board();
+            case 1:
+                msg.humanVsCPUMode();
+                break;
+            case 2:
+                msg.humanVsHumanMode();
+                gamePrep.nextLine();
+                break;
+            case 3:
+                msg.exit();
+                quit;
+            default:
+                System.out.println();
+        }
+
+        Board myBoard = new Board(gameModeChoice);
         myBoard.drawBoard();
         Scanner playerInput = new Scanner(System.in);
 

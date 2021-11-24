@@ -6,6 +6,7 @@ public class Board {
     private int numberOfTurns = 0;
     private String[] playerSymbol = new String[2];
     private String playerTurn;
+    private int gameMode;
 
 
     public static final String ANSI_RESET = "\u001B[0m";
@@ -14,7 +15,7 @@ public class Board {
     public static final String ANSI_ITAPurple = "\u001B[34;3m";
 
     // CONSTRUCTOR of the class Board. Cleans the board off null values, replacing it with "   ", assigns symbols to array
-    public Board() {
+    public Board(int gameMode) {
         for (int i = 0; i < board.length; i++) {
             for (int j = 0; j < board[0].length; j++) {
                 board[i][j] = "   ";
@@ -22,6 +23,7 @@ public class Board {
         }
         playerSymbol[0] = " X ";
         playerSymbol[1] = " O ";
+        this.gameMode = gameMode;
     }
     // This method draws the board taking the values assigned in the matrix board[][], while also adding formatting to
     // give the look of a typical Tic Tac Toe board.
@@ -156,17 +158,20 @@ public class Board {
         return numberOfTurns;
     }
 
-    // this get method was created to check whose turn is to play. There will be situations in which the player will make
+    // this get method was created to check whose turn it is to play. There will be situations in which the player will make
     // an invalid move for any number of reasons, which will not cause the switchPlayer() method to be called, making
     // it necessary to check every time whose turn is it, if it has changed or not, in order to maintain the game's rules
     public String getPlayerTurn() {
         return playerTurn;
     }
 
+    public void gameMode () {
+
+    }
     // player vs CPU
     // create a list of possible player: humanPlayer, cpuEasy, cpuNormal, cpuHard.
     // when humanPlayer is selected, gameController receives input
-    // the makeMove method receives the CPU input instead of the players', no changes needed
+    // the makeMove method receives the CPU input instead of the players', no changes needed for makeMove
     // when checking for playerTurn, create a second array with the possible players instead of just "symbols" as players
     // there will always be two players: either human vs one of the cpus or human vs human
     // so the switchPlayer method will switch between the elements inside this array
