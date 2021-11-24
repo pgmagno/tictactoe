@@ -162,4 +162,29 @@ public class Board {
     public String getPlayerTurn() {
         return playerTurn;
     }
+
+    // player vs CPU
+    // create a list of possible player: humanPlayer, cpuEasy, cpuNormal, cpuHard.
+    // when humanPlayer is selected, gameController receives input
+    // the makeMove method receives the CPU input instead of the players', no changes needed
+    // when checking for playerTurn, create a second array with the possible players instead of just "symbols" as players
+    // there will always be two players: either human vs one of the cpus or human vs human
+    // so the switchPlayer method will switch between the elements inside this array
+    // the array is formed by a gameMode method(to be created), switchPlayer will receive this array to work with
+    //finally, in gameController, before trying to receive input from the player, check if it's human or cpu.
+    //if human, receive input, if cpu receive input from a method cpuMove (to be created)
+    // cpuMove receives the array of players to identify which level it is (easy, normal, hard)
+    // upon receiving, switch between 3 possible scenarios: random possible move - easy, calculated blocking stratey - normal
+    // calculated winning strategy - hard
+
+    // create a new interface to be easier to play. Next to the board, create a mock board with numbers to show
+    // which single number represents the cell to be selected. after each move, these numbers will be formatted with
+    // another color, to show that it's no longer possible to make such move
+    //   1   2   3
+    //   4   5   6
+    //   7   8   9
+    // create a method to figure out which number represents which combination of row and column,
+    // possible need to refactor all other methods.
+
 }
+
